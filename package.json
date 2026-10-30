@@ -1,0 +1,20 @@
+{
+  "name": "smart-expense-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "prisma": { "schema": "server/prisma/schema.prisma" },
+  "scripts": {
+    "dev": "concurrently -k \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "build": "npm --prefix client run build",
+    "test": "npm --prefix server test && npm --prefix client test",
+    "lint": "npm --prefix server run lint && npm --prefix client run lint",
+    "seed": "npm --prefix server run seed",
+    "smoke": "node server/scripts/smoke.js",
+    "postinstall": "npm --prefix server install && npm --prefix client install"
+  },
+  "devDependencies": { "concurrently": "^9.1.2", "prettier": "^3.4.2", "prisma": "^6.1.0" },
+  "allowScripts": { "prisma@6.19.3": true, "@prisma/engines@6.19.3": true }
+}
